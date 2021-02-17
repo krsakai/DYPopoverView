@@ -13,7 +13,7 @@ public enum PopoverType {
     case popover, popout
 }
 //TODO: merge both methods to create popover - with preference and with anchorFrame
-struct PopoverViewModifier<ContentView: View, BackgroundView: View>: ViewModifier {
+public struct PopoverViewModifier<ContentView: View, BackgroundView: View>: ViewModifier {
     
     var contentView: ()->ContentView
     var backgroundView: ()->BackgroundView
