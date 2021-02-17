@@ -15,17 +15,17 @@ public enum PopoverType {
 //TODO: merge both methods to create popover - with preference and with anchorFrame
 public struct PopoverViewModifier<ContentView: View, BackgroundView: View>: ViewModifier {
     
-    var contentView: ()->ContentView
-    var backgroundView: ()->BackgroundView
-    @Binding var show: Bool
-    @Binding var frame: CGRect
-    var anchorFrame: CGRect?
-    var popoverType: PopoverType
-    var position: ViewPosition
-    var viewId: String
-    var settings: DYPopoverViewSettings
+    public var contentView: ()->ContentView
+    public var backgroundView: ()->BackgroundView
+    @Binding public var show: Bool
+    @Binding public var frame: CGRect
+    public var anchorFrame: CGRect?
+    public var popoverType: PopoverType
+    public var position: ViewPosition
+    public var viewId: String
+    public var settings: DYPopoverViewSettings
     
-     func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         Group {
             if anchorFrame != nil {
 
@@ -54,7 +54,7 @@ public struct PopoverViewModifier<ContentView: View, BackgroundView: View>: View
         }
     }
     
-    internal func popoverView<ContentView: View, BackgroundView: View>(geometry: GeometryProxy?, preferences: [DYPopoverViewOriginPreference], popoverType: PopoverType, @ViewBuilder content:  @escaping ()->ContentView, isPresented: Binding<Bool>, frame: Binding<CGRect>, anchorFrame: CGRect?, background: @escaping ()->BackgroundView,  position: ViewPosition, viewId: String, settings: DYPopoverViewSettings = DYPopoverViewSettings()) -> some View {
+    public func popoverView<ContentView: View, BackgroundView: View>(geometry: GeometryProxy?, preferences: [DYPopoverViewOriginPreference], popoverType: PopoverType, @ViewBuilder content:  @escaping ()->ContentView, isPresented: Binding<Bool>, frame: Binding<CGRect>, anchorFrame: CGRect?, background: @escaping ()->BackgroundView,  position: ViewPosition, viewId: String, settings: DYPopoverViewSettings = DYPopoverViewSettings()) -> some View {
         
         var originBounds = CGRect.zero
         if let anchorFrame = anchorFrame {
@@ -75,7 +75,7 @@ public struct PopoverViewModifier<ContentView: View, BackgroundView: View>: View
           
       }
      
-    internal func arrowPosition(viewPosition: ViewPosition, settings: DYPopoverViewSettings)->ViewPosition {
+    public func arrowPosition(viewPosition: ViewPosition, settings: DYPopoverViewSettings)->ViewPosition {
          
          return settings.differentArrowPosition == .none ? viewPosition.opposite : settings.differentArrowPosition
 
